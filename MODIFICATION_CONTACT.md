@@ -6,13 +6,15 @@ Ce guide explique comment modifier la section contact pour retirer le bouton de 
 
 ### Avant
 - Bouton "Planifier un appel" avec lien Calendly/Google Calendar
-- Formulaire de contact
+- Formulaire de contact (sans fonctionnalité d'envoi)
 
 ### Après
-- **Suppression complète du formulaire de contact**
-- Invitation à contacter directement par email ou téléphone uniquement
-- Email : baptiste.delalin@outlook.com
-- Téléphone : 06-17-67-92-67
+- **Supprimer** : La section "Prendre un RDV" / Calendly
+- **Conserver** : Le formulaire de contact
+- **Configurer** : Le formulaire pour envoyer un email à baptiste.delalin@outlook.com
+- **Ajouter** : Boutons Email et Téléphone en complément
+
+**Voir le guide complet :** `FORMULAIRE_CONTACT_EMAIL.md` pour la configuration de l'envoi d'email.
 
 ## 📝 Code à modifier dans Next.js
 
