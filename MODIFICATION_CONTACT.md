@@ -6,19 +6,40 @@ Ce guide explique comment modifier la section contact pour retirer le bouton de 
 
 ### Avant
 - Bouton "Planifier un appel" avec lien Calendly/Google Calendar
+- Formulaire de contact
 
 ### Après
-- Invitation à contacter directement par email ou téléphone
+- **Suppression complète du formulaire de contact**
+- Invitation à contacter directement par email ou téléphone uniquement
 - Email : baptiste.delalin@outlook.com
 - Téléphone : 06-17-67-92-67
 
 ## 📝 Code à modifier dans Next.js
 
-Dans votre composant Contact (probablement dans `app/page.tsx` ou `pages/index.tsx`), remplacez la section "Prenez rendez-vous" :
+Dans votre composant Contact (probablement dans `app/page.tsx` ou `pages/index.tsx`), vous devez :
+
+1. **Retirer complètement le formulaire de contact**
+2. **Retirer le bouton "Planifier un appel" / Calendly**
+3. **Remplacer par une section centrée avec les boutons Email et Téléphone**
+
+### Code à retirer (Formulaire de contact)
+
+```tsx
+{/* RETIRER TOUT CE BLOC */}
+<div class="bg-white rounded-xl shadow-lg p-8 border border-gray-100">
+  <h3 class="text-2xl font-semibold text-gray-900 mb-6">Envoyez-nous un message</h3>
+  <form class="space-y-6">
+    {/* Tout le formulaire avec les champs name, email, phone, company, projectType, budget, message */}
+  </form>
+</div>
+```
+
+### Code à retirer (Bouton Calendly)
 
 ### Ancien code (à retirer)
 
 ```tsx
+{/* RETIRER : Bouton Calendly */}
 <div class="bg-white rounded-xl shadow-lg p-8 border border-gray-100">
   <h3 class="text-2xl font-semibold text-gray-900 mb-6">Prenez rendez-vous</h3>
   <p class="text-gray-600 mb-8">Réservez un créneau de 30 minutes pour discuter de votre projet avec nos experts.</p>
@@ -26,32 +47,49 @@ Dans votre composant Contact (probablement dans `app/page.tsx` ou `pages/index.t
     <i class="far fa-calendar-alt mr-2"></i>Planifier un appel
   </a>
 </div>
+
+{/* RETIRER : Formulaire de contact complet */}
+<div class="bg-white rounded-xl shadow-lg p-8 border border-gray-100">
+  <h3 class="text-2xl font-semibold text-gray-900 mb-6">Envoyez-nous un message</h3>
+  <form class="space-y-6">
+    {/* Tous les champs du formulaire */}
+  </form>
+</div>
 ```
 
-### Nouveau code (à utiliser)
+### Nouveau code (à utiliser) - Section centrée sans formulaire
 
 ```tsx
-<div class="bg-white rounded-xl shadow-lg p-8 border border-gray-100">
-  <h3 class="text-2xl font-semibold text-gray-900 mb-6">Contactez-nous</h3>
-  <p class="text-gray-600 mb-8">Discutons de votre projet Salesforce. Contactez-nous directement par email ou téléphone pour planifier un rendez-vous.</p>
-  <div class="space-y-4">
-    <a 
-      href="mailto:baptiste.delalin@outlook.com?subject=Demande%20de%20contact%20-%20BDCForce&body=Bonjour,%0D%0A%0D%0AJe%20souhaiterais%20discuter%20de%20mon%20projet%20Salesforce.%0D%0A%0D%0ACordialement"
-      class="inline-flex items-center justify-center w-full bg-primary hover:bg-primary-dark text-white px-8 py-4 rounded-lg font-medium transition-colors duration-200"
-    >
-      <i class="fas fa-envelope mr-2"></i>
-      Envoyer un email
-    </a>
-    <a 
-      href="tel:+33617679267"
-      class="inline-flex items-center justify-center w-full bg-green-600 hover:bg-green-700 text-white px-8 py-4 rounded-lg font-medium transition-colors duration-200"
-    >
-      <i class="fas fa-phone mr-2"></i>
-      Appeler maintenant
-    </a>
+{/* REMPLACER la grille à 2 colonnes par une section centrée */}
+<div class="max-w-2xl mx-auto">
+  <div class="bg-white rounded-xl shadow-lg p-8 border border-gray-100">
+    <h3 class="text-2xl font-semibold text-gray-900 mb-6 text-center">
+      Contactez-nous directement
+    </h3>
+    <p class="text-gray-600 mb-8 text-center">
+      Discutons de votre projet Salesforce. Contactez-nous par email ou téléphone pour planifier un rendez-vous.
+    </p>
+    <div class="space-y-4">
+      <a 
+        href="mailto:baptiste.delalin@outlook.com?subject=Demande%20de%20contact%20-%20BDCForce&body=Bonjour,%0D%0A%0D%0AJe%20souhaiterais%20discuter%20de%20mon%20projet%20Salesforce.%0D%0A%0D%0ACordialement"
+        class="inline-flex items-center justify-center w-full bg-primary hover:bg-primary-dark text-white px-8 py-4 rounded-lg font-medium transition-colors duration-200"
+      >
+        <i class="fas fa-envelope mr-2"></i>
+        Envoyer un email
+      </a>
+      <a 
+        href="tel:+33617679267"
+        class="inline-flex items-center justify-center w-full bg-green-600 hover:bg-green-700 text-white px-8 py-4 rounded-lg font-medium transition-colors duration-200"
+      >
+        <i class="fas fa-phone mr-2"></i>
+        Appeler maintenant
+      </a>
+    </div>
   </div>
 </div>
 ```
+
+**Important :** Remplacez aussi la grille `grid grid-cols-1 lg:grid-cols-2` par une simple div centrée, car vous n'avez plus besoin de 2 colonnes.
 
 ## 🎨 Version alternative avec icônes côte à côte
 
@@ -96,10 +134,12 @@ Le lien `tel:` permet d'appeler directement depuis un mobile.
 
 ## ✅ Checklist de modification
 
+- [ ] **Retirer complètement le formulaire de contact**
 - [ ] Retirer le bouton "Planifier un appel" / Calendly
 - [ ] Ajouter le bouton "Envoyer un email" avec mailto:baptiste.delalin@outlook.com
 - [ ] Ajouter le bouton "Appeler maintenant" avec tel:+33617679267
 - [ ] Mettre à jour le texte d'invitation
+- [ ] Modifier la grille pour une seule colonne (plus besoin de 2 colonnes)
 - [ ] Tester les liens sur mobile et desktop
 - [ ] Vérifier que l'email s'ouvre correctement
 - [ ] Vérifier que le téléphone fonctionne sur mobile
@@ -128,13 +168,13 @@ Voici un exemple complet de la section contact modifiée :
       </p>
     </div>
     
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
-      {/* Section Contact Direct */}
+    {/* Section Contact Direct - Centrée, sans formulaire */}
+    <div class="max-w-2xl mx-auto">
       <div class="bg-white rounded-xl shadow-lg p-8 border border-gray-100">
-        <h3 class="text-2xl font-semibold text-gray-900 mb-6">
+        <h3 class="text-2xl font-semibold text-gray-900 mb-6 text-center">
           Contactez-nous directement
         </h3>
-        <p class="text-gray-600 mb-8">
+        <p class="text-gray-600 mb-8 text-center">
           Discutons de votre projet Salesforce. Contactez-nous par email ou téléphone pour planifier un rendez-vous.
         </p>
         <div class="space-y-4">
@@ -153,14 +193,6 @@ Voici un exemple complet de la section contact modifiée :
             Appeler maintenant
           </a>
         </div>
-      </div>
-      
-      {/* Formulaire de contact (inchangé) */}
-      <div class="bg-white rounded-xl shadow-lg p-8 border border-gray-100">
-        <h3 class="text-2xl font-semibold text-gray-900 mb-6">
-          Envoyez-nous un message
-        </h3>
-        {/* Formulaire existant */}
       </div>
     </div>
     
