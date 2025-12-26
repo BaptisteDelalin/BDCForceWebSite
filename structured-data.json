@@ -1,0 +1,151 @@
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "BDCForce",
+  "image": "https://www.bdcforce.fr/img/logo-web-transparent.png",
+  "@id": "https://www.bdcforce.fr",
+  "url": "https://www.bdcforce.fr",
+  "telephone": "+33617679267",
+  "email": "baptiste.delalin@bdcforce.fr",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Lille",
+    "addressRegion": "Hauts-de-France",
+    "addressCountry": "FR"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": "50.6292",
+    "longitude": "3.0573"
+  },
+  "openingHoursSpecification": {
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday"
+    ],
+    "opens": "09:00",
+    "closes": "18:00"
+  },
+  "priceRange": "$$",
+  "description": "Expert Salesforce certifié basé à Lille. Accompagnement des entreprises dans l'optimisation de leur CRM Salesforce, la gestion de données, la migration et l'automatisation des processus.",
+  "sameAs": [
+    "https://www.linkedin.com/company/bdcforce",
+    "https://fr.linkedin.com/in/delalin-baptiste"
+  ],
+  "areaServed": [
+    {
+      "@type": "City",
+      "name": "Lille"
+    },
+    {
+      "@type": "City",
+      "name": "Paris"
+    },
+    {
+      "@type": "City",
+      "name": "Bruxelles"
+    },
+    {
+      "@type": "State",
+      "name": "Hauts-de-France"
+    }
+  ],
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Services BDCForce",
+    "itemListElement": [
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Consulting Salesforce",
+          "description": "Accompagnement stratégique et technique dans la mise en place de solutions Salesforce adaptées à vos besoins.",
+          "provider": {
+            "@type": "Organization",
+            "name": "BDCForce"
+          },
+          "areaServed": {
+            "@type": "Country",
+            "name": "France"
+          }
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Développement Salesforce",
+          "description": "Création d'applications personnalisées, intégrations et automatisations sur la plateforme Salesforce.",
+          "provider": {
+            "@type": "Organization",
+            "name": "BDCForce"
+          }
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Formation Salesforce",
+          "description": "Programmes de formation sur mesure pour maîtriser les outils Salesforce et optimiser leur utilisation.",
+          "provider": {
+            "@type": "Organization",
+            "name": "BDCForce"
+          }
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Support Salesforce",
+          "description": "Accompagnement continu et maintenance pour garantir le bon fonctionnement de vos solutions.",
+          "provider": {
+            "@type": "Organization",
+            "name": "BDCForce"
+          }
+        }
+      }
+    ]
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "reviewCount": "2",
+    "bestRating": "5",
+    "worstRating": "1"
+  },
+  "review": [
+    {
+      "@type": "Review",
+      "author": {
+        "@type": "Person",
+        "name": "Michel ROMANET-CHANCRIN"
+      },
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": "5",
+        "bestRating": "5"
+      },
+      "reviewBody": "Consultant avec un sens fort de l'écoute et de l'orientation client. Très satisfait des prestations de Baptiste DELALIN. J'ai pu apprécier sa maîtrise de Salesforce dans son adaptation au monde RH et sa réactivité face à nos demandes (déploiement et évolutions)."
+    },
+    {
+      "@type": "Review",
+      "author": {
+        "@type": "Person",
+        "name": "Sylvain Le Guay"
+      },
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": "5",
+        "bestRating": "5"
+      },
+      "reviewBody": "J'ai été le manager de Baptiste pendant plus d'un an. Baptiste est engagé et investi, il est un booster pour l'équipe. Il est devenu le référent Salesforce en quelques mois pour nos clients. Son professionnalisme et sa disponibilité sont reconnues."
+    }
+  ]
+}
+

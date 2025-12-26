@@ -1,4 +1,207 @@
+# ============================================
+# BDCForce Website - Configuration OVH
+# Optimisations Performance, Sécurité, SEO
+# ============================================
+
+# ============================================
+# 1. REDIRECTION HTTPS (Sécurité)
+# ============================================
 RewriteEngine On
 RewriteCond %{ENV:HTTPS} !on
 RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
+# Redirection www vers non-www (ou inversement selon préférence)
+# RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
+# RewriteRule ^(.*)$ https://%1/$1 [R=301,L]
+
+# ============================================
+# 2. COMPRESSION (Performance)
+# ============================================
+<IfModule mod_deflate.c>
+    # Compresser HTML, CSS, JavaScript, Text, XML et fonts
+    AddOutputFilterByType DEFLATE text/html
+    AddOutputFilterByType DEFLATE text/css
+    AddOutputFilterByType DEFLATE text/javascript
+    AddOutputFilterByType DEFLATE text/xml
+    AddOutputFilterByType DEFLATE text/plain
+    AddOutputFilterByType DEFLATE application/javascript
+    AddOutputFilterByType DEFLATE application/x-javascript
+    AddOutputFilterByType DEFLATE application/json
+    AddOutputFilterByType DEFLATE application/xml
+    AddOutputFilterByType DEFLATE application/xhtml+xml
+    AddOutputFilterByType DEFLATE application/rss+xml
+    AddOutputFilterByType DEFLATE application/atom+xml
+    AddOutputFilterByType DEFLATE image/svg+xml
+    AddOutputFilterByType DEFLATE font/truetype
+    AddOutputFilterByType DEFLATE font/opentype
+    AddOutputFilterByType DEFLATE application/vnd.ms-fontobject
+    AddOutputFilterByType DEFLATE application/x-font-ttf
+    AddOutputFilterByType DEFLATE application/x-font-opentype
+    AddOutputFilterByType DEFLATE application/font-woff
+    AddOutputFilterByType DEFLATE application/font-woff2
+    
+    # Ne pas compresser les images déjà compressées
+    SetEnvIfNoCase Request_URI \.(?:gif|jpe?g|png|webp)$ no-gzip dont-vary
+    SetEnvIfNoCase Request_URI \.(?:exe|t?gz|zip|bz2|sit|rar)$ no-gzip dont-vary
+</IfModule>
+
+# ============================================
+# 3. MISE EN CACHE (Performance)
+# ============================================
+<IfModule mod_expires.c>
+    ExpiresActive On
+    
+    # Images
+    ExpiresByType image/jpeg "access plus 1 year"
+    ExpiresByType image/jpg "access plus 1 year"
+    ExpiresByType image/gif "access plus 1 year"
+    ExpiresByType image/png "access plus 1 year"
+    ExpiresByType image/webp "access plus 1 year"
+    ExpiresByType image/svg+xml "access plus 1 year"
+    ExpiresByType image/x-icon "access plus 1 year"
+    
+    # Fonts
+    ExpiresByType font/woff "access plus 1 year"
+    ExpiresByType font/woff2 "access plus 1 year"
+    ExpiresByType application/font-woff "access plus 1 year"
+    ExpiresByType application/font-woff2 "access plus 1 year"
+    ExpiresByType font/truetype "access plus 1 year"
+    ExpiresByType font/opentype "access plus 1 year"
+    
+    # CSS et JavaScript
+    ExpiresByType text/css "access plus 1 month"
+    ExpiresByType text/javascript "access plus 1 month"
+    ExpiresByType application/javascript "access plus 1 month"
+    ExpiresByType application/x-javascript "access plus 1 month"
+    
+    # HTML
+    ExpiresByType text/html "access plus 0 seconds"
+    
+    # Autres
+    ExpiresByType application/pdf "access plus 1 month"
+    ExpiresByType application/x-shockwave-flash "access plus 1 month"
+</IfModule>
+
+# Headers de cache alternatifs si mod_expires n'est pas disponible
+<IfModule mod_headers.c>
+    # Cache pour les images
+    <FilesMatch "\.(jpg|jpeg|png|gif|webp|svg|ico)$">
+        Header set Cache-Control "max-age=31536000, public, immutable"
+    </FilesMatch>
+    
+    # Cache pour les fonts
+    <FilesMatch "\.(woff|woff2|ttf|otf|eot)$">
+        Header set Cache-Control "max-age=31536000, public, immutable"
+    </FilesMatch>
+    
+    # Cache pour CSS et JS
+    <FilesMatch "\.(css|js)$">
+        Header set Cache-Control "max-age=2592000, public"
+    </FilesMatch>
+    
+    # Pas de cache pour HTML
+    <FilesMatch "\.(html|htm)$">
+        Header set Cache-Control "no-cache, no-store, must-revalidate"
+        Header set Pragma "no-cache"
+        Header set Expires "0"
+    </FilesMatch>
+</IfModule>
+
+# ============================================
+# 4. SÉCURITÉ - Headers HTTP
+# ============================================
+<IfModule mod_headers.c>
+    # Protection XSS
+    Header set X-XSS-Protection "1; mode=block"
+    
+    # Empêcher le MIME-sniffing
+    Header set X-Content-Type-Options "nosniff"
+    
+    # Empêcher le clickjacking
+    Header set X-Frame-Options "SAMEORIGIN"
+    
+    # Politique de référent
+    Header set Referrer-Policy "strict-origin-when-cross-origin"
+    
+    # Permissions Policy (anciennement Feature Policy)
+    Header set Permissions-Policy "geolocation=(), microphone=(), camera=()"
+    
+    # Content Security Policy (à adapter selon vos besoins)
+    # Header set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://fonts.googleapis.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self';"
+    
+    # HSTS (Strict Transport Security) - Activer seulement si HTTPS est permanent
+    Header set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+</IfModule>
+
+# ============================================
+# 5. PROTECTION DES FICHIERS SENSIBLES
+# ============================================
+# Bloquer l'accès aux fichiers de configuration
+<FilesMatch "^(\.htaccess|\.git|\.env|\.gitignore|package\.json|composer\.json)$">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+# Bloquer l'accès aux fichiers de logs
+<FilesMatch "\.(log|txt)$">
+    <If "%{REQUEST_URI} !~ m#^/(robots\.txt|sitemap\.xml)$#">
+        Order allow,deny
+        Deny from all
+    </If>
+</FilesMatch>
+
+# ============================================
+# 6. OPTIMISATIONS DIVERSES
+# ============================================
+# Désactiver la signature du serveur
+ServerSignature Off
+
+# Désactiver l'affichage des répertoires
+Options -Indexes
+
+# ============================================
+# 7. GESTION DES ERREURS
+# ============================================
+ErrorDocument 404 /404.html
+ErrorDocument 500 /404.html
+
+# ============================================
+# 8. OPTIMISATION DES TYPES MIME
+# ============================================
+<IfModule mod_mime.c>
+    # WebP
+    AddType image/webp .webp
+    
+    # Fonts
+    AddType font/woff .woff
+    AddType font/woff2 .woff2
+    AddType application/vnd.ms-fontobject .eot
+    AddType font/truetype .ttf
+    AddType font/opentype .otf
+    
+    # JavaScript
+    AddType application/javascript .js
+    AddType application/json .json
+    
+    # CSS
+    AddType text/css .css
+    
+    # SVG
+    AddType image/svg+xml .svg .svgz
+</IfModule>
+
+# ============================================
+# 9. RÉÉCRITURE D'URLS (SEO)
+# ============================================
+# Supprimer les trailing slashes (optionnel)
+# RewriteCond %{REQUEST_FILENAME} !-d
+# RewriteCond %{REQUEST_URI} (.+)/$
+# RewriteRule ^ %1 [R=301,L]
+
+# ============================================
+# 10. PROTECTION CONTRE LES HOTLINKS
+# ============================================
+# Décommenter si vous voulez empêcher le hotlinking de vos images
+# RewriteCond %{HTTP_REFERER} !^$
+# RewriteCond %{HTTP_REFERER} !^https?://(www\.)?bdcforce\.fr [NC]
+# RewriteRule \.(jpg|jpeg|png|gif|webp)$ - [F,L]

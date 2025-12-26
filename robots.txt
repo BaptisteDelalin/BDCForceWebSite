@@ -1,4 +1,54 @@
+# ============================================
+# robots.txt pour BDCForce
+# ============================================
+
+# Tous les robots
 User-agent: *
-Disallow: /cyberpunk/
+
+# Autoriser l'indexation de toutes les pages publiques
 Allow: /
-Sitemap: https://www.bdcforce.fr/sitemap.xml 
+Allow: /img/
+Allow: /audio/
+Allow: /_next/static/
+
+# Interdire l'indexation des pages privées/expérimentales
+Disallow: /cyberpunk/
+Disallow: /code_001.html
+Disallow: /downloads/
+Disallow: /_next/
+Disallow: /404.html
+Disallow: /404/
+
+# Interdire l'indexation des fichiers de configuration
+Disallow: /*.txt$
+Disallow: /*.log$
+Disallow: /.htaccess
+Disallow: /.git/
+
+# Crawl-delay (optionnel, pour éviter de surcharger le serveur)
+# Crawl-delay: 1
+
+# Sitemap
+Sitemap: https://www.bdcforce.fr/sitemap.xml
+
+# ============================================
+# Robots spécifiques
+# ============================================
+
+# Google
+User-agent: Googlebot
+Allow: /
+Disallow: /cyberpunk/
+Disallow: /downloads/
+
+# Bing
+User-agent: Bingbot
+Allow: /
+Disallow: /cyberpunk/
+Disallow: /downloads/
+
+# Yandex
+User-agent: Yandex
+Allow: /
+Disallow: /cyberpunk/
+Disallow: /downloads/ 
