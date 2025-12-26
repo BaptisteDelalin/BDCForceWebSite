@@ -88,12 +88,12 @@ chmod +x test-site.sh
 - [ ] Le formulaire s'affiche correctement
 - [ ] Les champs sont accessibles
 - [ ] La validation fonctionne (à implémenter)
-- [ ] Le lien Calendly fonctionne
+- [ ] Le lien Google Calendar fonctionne
 
 ### 4. Liens Externes
 - [ ] Les liens LinkedIn fonctionnent
 - [ ] Le lien Twitter fonctionne (si présent)
-- [ ] Le lien Calendly fonctionne
+- [ ] Le lien Google Calendar fonctionne
 
 ### 5. Responsive Design
 - [ ] Tester sur mobile (Chrome DevTools)

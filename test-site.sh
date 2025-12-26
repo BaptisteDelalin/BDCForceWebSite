@@ -225,7 +225,7 @@ if [ -f "index.html" ]; then
     EXTERNAL_LINKS=(
         "https://www.linkedin.com/company/bdcforce"
         "https://fr.linkedin.com/in/delalin-baptiste"
-        "https://calendly.com/bdcforce"
+        "https://calendar.google.com"
     )
     
     for link in "${EXTERNAL_LINKS[@]}"; do
