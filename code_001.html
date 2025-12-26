@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NODE_9 :: CODE_001</title>
+  <style>
+    body {
+      background: #0d0d0d;
+      color: #f0eae2;
+      font-family: monospace;
+      padding: 2rem;
+    }
+    .wrapper {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+    }
+    .scroll {
+      border: 2px solid #774d1f;
+      padding: 1rem;
+      background: #1a0f07;
+      color: #e3cfa9;
+      font-family: 'Courier New', monospace;
+      font-size: 0.85rem;
+    }
+    .ascii, .rebus {
+      font-family: 'Lucida Console', monospace;
+      white-space: pre-wrap;
+      background: #121212;
+      color: #39ff14;
+      padding: 1rem;
+      margin-top: 2rem;
+    }
+    .hidden-link {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <h1>☽ CODE_001 : ARCHIVE :: NINE ☾</h1>
+  <p><em>In the annals of NODE_9, whispers endure... beneath circuitry and ciphers, the heresy of truth breathes still.</em></p>
+
+  <div class="wrapper">
+    <div class="scroll">
+      <strong>Latinum Logica:</strong><br>
+      "Sub datae veritate, nodus residet."<br><br>
+      Binary:<br>
+      01001110 01001111 01000100 01000101 01011001
+    </div>
+    <div class="scroll">
+      <strong>Prophétie oubliée:</strong><br>
+      "Quand la clef brillera dans l'œil du miroir, la lumière s'effacera."<br><br>
+      Cyrillic Translittéré:<br>
+      "Oni smotrjat, no ne vidjat."
+    </div>
+    <div class="scroll">
+      <strong>System Trace:</strong><br>
+      /NODE9/secure/data/FRAGMENT_002.zip [AVAILABLE]<br>
+      /NODE9/secure/README.txt [CORRUPTED]<br><br>
+      LOG:<br>
+      ::LOG NODE9//<br>
+      ACCESS LEVEL: N/A<br>
+      CONTENT:<br>
+      'Mklubg==' → Not a valid packet? Check shift ROT
+    </div>
+    <div class="scroll">
+      <strong>Extra Access:</strong><br>
+      <a href="/downloads/FRAGMENT_002.zip" download style="color:#39ff14;text-decoration:underline;">Télécharger FRAGMENT_002.zip</a><br>
+      <span style="font-size:0.7em;opacity:0.4;">사용하려면 unzip core_trace.log</span>
+    </div>
+  </div>
+
+  <div class="ascii">
+    ░▒▓█ ~~~ Ϟ 👁‍🗨  + {photo[mirror]} - [light] ~~~ █▓▒░<br>
+    "If you decrypt the seeing eye, you will reflect the path."
+  </div>
+
+  <div class="rebus">
+    Encrypted Link Fragment:<br>
+    QmRjZm9yY2U6Ly9sb2dzL3ZpZGVvL2luZGV4Lmh0bWw= <!-- ROT13 or base64 hint -->
+  </div>
+
+  <a class="hidden-link" href="https://i.imgur.com/Xn3KD91.jpg">Clé visuelle</a>
+  <a class="hidden-link" href="/img/mirror_terminal.png">Mirror Terminal</a>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const scrolls = document.querySelectorAll('.scroll');
+      scrolls.forEach((el, i) => {
+        el.style.opacity = 0;
+        setTimeout(() => el.style.opacity = 1, i * 800);
+      });
+      // Hint console
+      console.log('Hint: search for "mirror"');
+    });
+  </script>
+</body>
+</html> 

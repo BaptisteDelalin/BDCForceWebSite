@@ -1,0 +1,16 @@
+
+:: NODE_9 SECTOR DUMP ::
+> fragment: CODE_002
+> origin: 02BFCX/03_SECTOR
+
+[ WARNING ] corrupted header
+[ ENTRY 001 ]
+echo "U29tZSBzZWNyZXQgd29yZCBsaWVzIGhlcmUuLi4=" | base64 --decode
+# ROT hint: JVYYVARE
+# [ HINT ] Apply ROT13 to JVYYVARE
+
+[ ENTRY 002 ]
+MSG: When mirror meets fire, path is seen.
+KEY: %TRACE::mirror//X91.link.sig%
+
+::EOF

@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /cyberpunk/
+Allow: /
+Sitemap: https://www.bdcforce.fr/sitemap.xml 
